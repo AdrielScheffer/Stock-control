@@ -1,7 +1,8 @@
+from itertools import product
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .serializers import NoteSerializer
+from .serializers import ProductSerializer, NewProductSerializer
 from .models import Product
 
 # Create your views here.
@@ -46,7 +47,26 @@ def getRoute(request):
 
 
 @api_view(['GET'])
-def getNotes(request):
+def getProducts(request):
     products = Product.objects.all().order_by('-updated')
-    serializer = NoteSerializer(products, many=True)
+    serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+def createProduct(request):
+    data= request.data
+    products = Product.objects.create(
+        name = data[0],
+        amount = data[1],
+        price= data[2]
+        )
+    serializer = NewProductSerializer(products)
+    return Response(serializer.data)
+
+
+@api_view(["DELETE"])
+def deleteProduct(request,pk):
+    product = Product.objects.get(id=pk)
+    product.delete()
+    return Response('note was deleted!')
