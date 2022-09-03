@@ -22,6 +22,19 @@ export const ProductsPage = ()=>{
         setProducts(data)
     }
 
+
+
+    const updateProduct= async(formValues, id)=>{
+      fetch(`http://127.0.0.1:8000/api/products/${id}/update/`,{
+      method:"PUT",
+      headers:{
+          "content-type":"application/json"
+      },
+      body:JSON.stringify(formValues)
+      })
+  }
+
+
     const createProduct= async(datos)=>{
         fetch(`http://127.0.0.1:8000/api/products/create/`,{
         method:"POST",
@@ -32,14 +45,35 @@ export const ProductsPage = ()=>{
         })
     }
 
-    
+
+    const updateHandler= async(id, amount, price)=>{
+
+
+      const { value: formValues }= await Swal.fire({
+          title: 'Multiple inputs',
+          html:
+            `<input id="swal-input2" class="swal2-input" placeholder="cantidad" value=${amount}>` +
+            `<input id="swal-input3" class="swal2-input" placeholder="precio" value=${price}>`,
+          focusConfirm: false,
+          preConfirm: () => {
+            return [
+              document.getElementById('swal-input2').value,
+              document.getElementById('swal-input3').value
+             
+            ]
+          }
+        })
+        
+        if (formValues) {
+          
+          console.log("id: "+ id, "valores: " + formValues)
+          updateProduct(formValues, id)
+          window.location.reload()
+          
+        }}
 
     
     const alert= async()=>{
-
-
-
-      
 
     
         const { value: formValues }= await Swal.fire({
@@ -79,7 +113,7 @@ export const ProductsPage = ()=>{
       }
     
 
-
+      
           
 
           
@@ -87,12 +121,12 @@ export const ProductsPage = ()=>{
 
     return(
     
-    <div>
-        <button onClick={alert}>agregar producto</button>
-        <div>
+    <div className="main__container">
+        <button className="main__container-add-button" onClick={alert}>agregar producto</button>
+        <div className="main__container-element">
             {products.map((product, index)=> (
                 
-                <ProductItem key={index} product={product} deleteP={deleteNote}/>
+                <ProductItem key={index} product={product} deleteP={deleteNote} updateP={updateHandler}/>
             ))}
         </div>
     </div>

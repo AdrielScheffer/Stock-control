@@ -2,7 +2,7 @@ from itertools import product
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .serializers import ProductSerializer, NewProductSerializer
+from .serializers import ProductSerializer, NewProductSerializer, UpdateSerializer
 from .models import Product
 
 # Create your views here.
@@ -70,3 +70,17 @@ def deleteProduct(request,pk):
     product = Product.objects.get(id=pk)
     product.delete()
     return Response('note was deleted!')
+
+
+@api_view(["PUT"])
+def updateProduct(request, pk):
+    data= request.data
+    true_data = {"amount":data[0],"price":data[1]}
+    product = Product.objects.get(id=pk)
+    print(data)
+    serializer = UpdateSerializer(instance=product, data=true_data)
+
+    if serializer.is_valid():
+        serializer.save()
+    
+    return Response(serializer.data)

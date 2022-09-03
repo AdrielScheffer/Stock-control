@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+.main__container{
+    background-color: rgb(51, 23, 35);
+}
+
+.element-container{
+    margin: 10px;
+    border: #000 3px solid;
+    border-radius: 24px;
+    background-color: rgb(179, 135, 135);
+    padding-bottom: 30px;
+}
+
+.element-container-inside{
+    padding: 10px;
+}
+
+.element-name{
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+}
+
+.icon-modify{
+    color: rgb(29, 114, 21);
+    position: absolute;
+    font-size: 60px;
+    right: 50px;
+}
+
+.element-amount{
+    display: flex;
+    font-weight: bold;
+    font-size: 20px;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.element-price{
+    padding: 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.icon-delete{
+    color: rgb(240, 13, 13);
+    
+    position: absolute;
+    font-size: 30px;
+    
+    
+
+}

@@ -16,3 +16,12 @@ class NewProductSerializer(ModelSerializer):
             'amount',
             'price'
         ]
+
+
+class UpdateSerializer(ModelSerializer):
+    class Meta:
+        model = Product
+        fields = [
+            'amount',
+            'price'
+        ]
