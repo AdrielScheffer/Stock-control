@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom"
 
-export const AddButton=()=>{
+export const AddButton=({addProduct})=>{
 
 
 
     return(
 
-        <div>
+        <div className="main__container-add-button">
             
-        <Link to={"/note/new"}>
-            add note
-        </Link>
+        <Link to={"/"} onClick={()=>{addProduct()}} className="add-button-link">agregar producto</Link>
+            
+        
         
 
         </div>

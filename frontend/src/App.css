@@ -5,14 +5,14 @@
 }
 
 .main__container{
-    background-color: rgb(51, 23, 35);
+    background-color: rgb(24, 16, 13);
+    padding: 10px;
 }
 
 .element-container{
     margin: 10px;
-    border: #000 3px solid;
     border-radius: 24px;
-    background-color: rgb(179, 135, 135);
+    background-color: rgba(48, 38, 38, 0.63);
     padding-bottom: 30px;
 }
 
@@ -24,10 +24,11 @@
     font-weight: bold;
     padding: 5px;
     text-align: center;
+    color: rgb(255, 255, 255);
 }
 
 .icon-modify{
-    color: rgb(29, 114, 21);
+    color: rgb(21, 134, 11);
     position: absolute;
     font-size: 60px;
     right: 50px;
@@ -39,20 +40,37 @@
     font-size: 20px;
     justify-content: space-between;
     padding: 5px;
+    color: rgb(175, 243, 49);
 }
 
 .element-price{
     padding: 5px;
     font-weight: bold;
     font-size: 20px;
+    color: rgb(175, 243, 49);
 }
 
 .icon-delete{
-    color: rgb(240, 13, 13);
+    color: rgb(172, 19, 19);
     
     position: absolute;
     font-size: 30px;
     
     
 
+}
+
+.main__container-add-button{
+    background-color: rgba(48, 38, 38, 0.63);
+    color: rgb(175, 243, 49);
+    padding: 10px;
+    border-radius: 12px;
+    width: 150px;
+    text-align: center;
+    margin: auto;
+}
+
+.add-button-link{
+    text-decoration: none;
+    color: rgb(175, 243, 49);
 }

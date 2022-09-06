@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { ProductItem } from "../ProductItem/ProductItem"
 import Swal from 'sweetalert2'
+import { AddButton } from "../AddButton/AddButton"
 
 
 export const ProductsPage = ()=>{
@@ -17,7 +18,7 @@ export const ProductsPage = ()=>{
     }, [])
 
     const getProducts = async()=>{
-        let response = await fetch('http://127.0.0.1:8000/api/products/')
+        let response = await fetch('/api/products/')
         let data = await response.json()
         setProducts(data)
     }
@@ -25,7 +26,7 @@ export const ProductsPage = ()=>{
 
 
     const updateProduct= async(formValues, id)=>{
-      fetch(`http://127.0.0.1:8000/api/products/${id}/update/`,{
+      fetch(`/api/products/${id}/update/`,{
       method:"PUT",
       headers:{
           "content-type":"application/json"
@@ -36,7 +37,7 @@ export const ProductsPage = ()=>{
 
 
     const createProduct= async(datos)=>{
-        fetch(`http://127.0.0.1:8000/api/products/create/`,{
+        fetch(`api/products/create/`,{
         method:"POST",
         headers:{
             "content-type":"application/json",
@@ -103,7 +104,7 @@ export const ProductsPage = ()=>{
           }}
 
     const deleteNote= async (id)=>{
-      fetch (`http://127.0.0.1:8000/api/products/${id}/delete/`,{
+      fetch (`/api/products/${id}/delete/`,{
           method:"DELETE",
           headers:{
               "content-type":"application/json"
@@ -122,7 +123,7 @@ export const ProductsPage = ()=>{
     return(
     
     <div className="main__container">
-        <button className="main__container-add-button" onClick={alert}>agregar producto</button>
+        <AddButton addProduct={alert}/>
         <div className="main__container-element">
             {products.map((product, index)=> (
                 

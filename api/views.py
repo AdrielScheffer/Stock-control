@@ -12,34 +12,28 @@ def getRoute(request):
 
     routes = [
         {
-            'Endpoint': '/notes/',
+            'Endpoint': '/products/',
             'method': 'GET',
             'body': None,
-            'description': 'Returns an array of notes'
+            'description': 'Returns an array of products'
         },
         {
-            'Endpoint': '/notes/id',
-            'method': 'GET',
-            'body': None,
-            'description': 'Returns a single note object'
-        },
-        {
-            'Endpoint': '/notes/create/',
+            'Endpoint': '/products/create/',
             'method': 'POST',
             'body': {'body': ""},
-            'description': 'Creates new note with data sent in post request'
+            'description': 'Creates new products with data sent in post request'
         },
         {
-            'Endpoint': '/notes/id/update/',
+            'Endpoint': '/products/id/update/',
             'method': 'PUT',
             'body': {'body': ""},
-            'description': 'Creates an existing note with data sent in post request'
+            'description': 'Creates an existing product with data sent in post request'
         },
         {
-            'Endpoint': '/notes/id/delete/',
+            'Endpoint': '/products/id/delete/',
             'method': 'DELETE',
             'body': None,
-            'description': 'Deletes and exiting note'
+            'description': 'Deletes and exiting product'
         },
     ]
 
