@@ -6,7 +6,7 @@ import { AddButton } from "../AddButton/AddButton"
 
 export const ProductsPage = ()=>{
 
-    
+    const [query, setQuery] = useState("");
 
     const [products, setProducts] = useState([])
 
@@ -15,10 +15,10 @@ export const ProductsPage = ()=>{
     useEffect(()=>{
         getProducts()
 
-    }, [])
+    }, [query])
 
     const getProducts = async()=>{
-        let response = await fetch('/api/products/')
+        let response = await fetch(`/api/products/`)
         let data = await response.json()
         setProducts(data)
     }
@@ -51,7 +51,7 @@ export const ProductsPage = ()=>{
 
 
       const { value: formValues }= await Swal.fire({
-          title: 'Multiple inputs',
+          title: 'Actualizar producto',
           html:
             `<input id="swal-input2" class="swal2-input" placeholder="cantidad" value=${amount}>` +
             `<input id="swal-input3" class="swal2-input" placeholder="precio" value=${price}>`,
@@ -78,7 +78,7 @@ export const ProductsPage = ()=>{
 
     
         const { value: formValues }= await Swal.fire({
-            title: 'Multiple inputs',
+            title: 'Añadir producto',
             html:
               '<input id="swal-input1" class="swal2-input" placeholder="nombre">' +
               '<input id="swal-input2" class="swal2-input" placeholder="cantidad">' +
@@ -123,9 +123,23 @@ export const ProductsPage = ()=>{
     return(
     
     <div className="main__container">
-        <AddButton addProduct={alert}/>
+        <div className="search">
+            <input
+            className="input-search" 
+            type={"text"} 
+            placeholder="buscar..." 
+            onChange={e=> setQuery(e.target.value)}
+            />
+            <div>
+            <AddButton addProduct={alert}/>
+            </div>
+        </div>
+        
         <div className="main__container-element">
-            {products.map((product, index)=> (
+
+            {products.filter((product)=>
+              product.name.toLowerCase().includes(query)
+            ).map((product, index)=> (
                 
                 <ProductItem key={index} product={product} deleteP={deleteNote} updateP={updateHandler}/>
             ))}
