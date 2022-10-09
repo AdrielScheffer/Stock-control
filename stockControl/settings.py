@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-+!lyqt2_653l9-s^xcp(6)3kz=%66p(qstmq#^qoofg^0%rljo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["stock-control-production.up.railway.app"]
+
 
 
 # Application definition
@@ -137,6 +137,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000'
 ]
 
+ALLOWED_HOSTS=["stock-control-production-02e0.up.railway.app"]
 
 
 

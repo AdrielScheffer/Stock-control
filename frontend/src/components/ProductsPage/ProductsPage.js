@@ -19,7 +19,9 @@ export const ProductsPage = ()=>{
 
     const getProducts = async()=>{
         let response = await fetch(`/api/products/`)
+        
         let data = await response.json()
+        console.log("data: "+ data)
         setProducts(data)
     }
 
@@ -37,10 +39,11 @@ export const ProductsPage = ()=>{
 
 
     const createProduct= async(datos)=>{
-        fetch(`api/products/create/`,{
+        await fetch(`api/products/create/`,{
         method:"POST",
         headers:{
             "content-type":"application/json",
+            
         },
         body:JSON.stringify(datos)
         })
