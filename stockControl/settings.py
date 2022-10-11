@@ -139,7 +139,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000'
 ]
 
-ALLOWED_HOSTS=["stock-control-production.up.railway.app"]
+ALLOWED_HOSTS=["https://stock-control-production.up.railway.app"]
 
 
 
