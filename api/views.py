@@ -44,6 +44,7 @@ def getRoute(request):
 def getProducts(request):
     products = Product.objects.all().order_by('-updated')
     serializer = ProductSerializer(products, many=True)
+    print(serializer.data)
     return Response(serializer.data)
 
 
