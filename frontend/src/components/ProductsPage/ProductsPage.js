@@ -19,7 +19,6 @@ export const ProductsPage = ()=>{
 
     const getProducts = async()=>{
         let response = await fetch(`/api/products/`)
-        
         let data = await response.json()
         console.log("data: "+ data)
         setProducts(data)
